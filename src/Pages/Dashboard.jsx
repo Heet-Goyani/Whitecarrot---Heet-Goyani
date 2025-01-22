@@ -38,6 +38,22 @@ function Dashboard({ session, onSignOut }) {
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
   };
+
+  useEffect(() => {
+    if (session) {
+      fetchEventsBetweenDates(fromDate, toDate);
+    }
+  }, [session, fromDate, toDate, fetchEventsBetweenDates]);
+  // const fetchEventsBetweenDates = useCallback(async (startDate, endDate) => {
+  //   // Function implementation here
+  // }, [session]);
+  
+  useEffect(() => {
+    if (session) {
+      fetchEventsBetweenDates(fromDate, toDate);
+    }
+  }, [session, fromDate, toDate, fetchEventsBetweenDates]);
+  
   const fetchEventsBetweenDates = async (startDate, endDate) => {
     // Convert startDate and endDate to ISO strings (UTC format)
     const timeMin = new Date(startDate).toISOString();
